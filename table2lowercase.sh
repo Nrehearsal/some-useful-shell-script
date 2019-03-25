@@ -42,7 +42,7 @@ mysql -h$host -u$username -p$password -NBe "$sql" >> dbname.log
 for db in `cat dbname.log`
 do
 #创建存储过程的sql语句，通过查询information_schema表获取指定数据库的表名
-`mysql -h127.0.0.1 -uroot -p$password -D $db >> change.log << EOF
+`mysql -h$host -u$username -p$password -D $db >> change.log << EOF
 DELIMITER $$
 DROP PROCEDURE IF EXISTS lowercase $$
 CREATE PROCEDURE lowercase(IN dbname VARCHAR(50)) 
